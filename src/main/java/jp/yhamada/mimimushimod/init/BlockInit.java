@@ -1,6 +1,6 @@
-package jp.yhamada.project2.init;
+package jp.yhamada.mimimushimod.init;
 
-import jp.yhamada.project2.Project2;
+import jp.yhamada.mimimushimod.MimiMushiMod;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -17,7 +17,7 @@ import java.util.function.Supplier;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class BlockInit {
-    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Project2.MOD_ID);
+    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MimiMushiMod.MOD_ID);
 
     public static final RegistryObject<Block> MIMI_MUSHI_BLOCK = BLOCKS.register(
             "mimi_mushi_block",
@@ -29,7 +29,7 @@ public class BlockInit {
         if (event.getRegistryKey().equals(ForgeRegistries.Keys.ITEMS)) {
             BLOCKS.getEntries().forEach((blockRegistryObject -> {
                 Block block = blockRegistryObject.get();
-                Item.Properties properties = new Item.Properties().tab(Project2.ModCreativeTab.instance);
+                Item.Properties properties = new Item.Properties().tab(MimiMushiMod.ModCreativeTab.instance);
                 Supplier<Item> blockItemFactory = () -> new BlockItem(block, properties);
                 event.register(ForgeRegistries.Keys.ITEMS, blockRegistryObject.getId(), blockItemFactory);
             }));

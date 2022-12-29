@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "project2:items/mimi_mushi"
+    "layer0": "mimimushimod:items/smile"
   }
 }

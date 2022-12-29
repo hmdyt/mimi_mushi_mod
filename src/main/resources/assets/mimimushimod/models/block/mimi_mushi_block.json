@@ -1,6 +1,6 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "project2:blocks/mimi_mushi_block"
+    "all": "mimimushimod:blocks/mimi_mushi_block"
   }
 }

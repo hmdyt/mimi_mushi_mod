@@ -1,8 +1,8 @@
-package jp.yhamada.project2;
+package jp.yhamada.mimimushimod;
 
 import com.mojang.logging.LogUtils;
-import jp.yhamada.project2.init.BlockInit;
-import jp.yhamada.project2.init.ItemInit;
+import jp.yhamada.mimimushimod.init.BlockInit;
+import jp.yhamada.mimimushimod.init.ItemInit;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
@@ -19,12 +19,12 @@ import net.minecraftforge.registries.ForgeRegistries;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
-@Mod(Project2.MOD_ID)
-public class Project2 {
-    public static final String MOD_ID = "project2";
+@Mod(MimiMushiMod.MOD_ID)
+public class MimiMushiMod {
+    public static final String MOD_ID = "mimimushimod";
     private static final Logger LOGGER = LogUtils.getLogger();
 
-    public Project2() {
+    public MimiMushiMod() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         // Register the commonSetup method for mod loading
@@ -62,7 +62,7 @@ public class Project2 {
     }
 
     public static class ModCreativeTab extends CreativeModeTab {
-        public static final ModCreativeTab instance = new ModCreativeTab(CreativeModeTab.TABS.length, Project2.MOD_ID);
+        public static final ModCreativeTab instance = new ModCreativeTab(CreativeModeTab.TABS.length, MimiMushiMod.MOD_ID);
 
         public ModCreativeTab(int index, String label) {
             super(index, label);

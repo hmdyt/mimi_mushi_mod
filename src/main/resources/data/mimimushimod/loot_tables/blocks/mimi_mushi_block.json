@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "project2:mimi_mushi_block"
+          "name": "mimimushimod:mimi_mushi_block"
         }
       ]
     }
