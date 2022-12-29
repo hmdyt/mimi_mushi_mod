@@ -1,14 +1,11 @@
 package jp.yhamada.project2;
 
 import com.mojang.logging.LogUtils;
+import jp.yhamada.project2.init.ItemInit;
 import net.minecraft.client.Minecraft;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.Material;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -17,9 +14,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -28,8 +23,6 @@ public class Project2
 {
     public static final String MOD_ID = "project2";
     private static final Logger LOGGER = LogUtils.getLogger();
-    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MOD_ID);
-    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MOD_ID);
 
     public Project2()
     {
@@ -38,10 +31,7 @@ public class Project2
         // Register the commonSetup method for mod loading
         modEventBus.addListener(this::commonSetup);
 
-        // Register the Deferred Register to the mod event bus so blocks get registered
-        BLOCKS.register(modEventBus);
-        // Register the Deferred Register to the mod event bus so items get registeredR
-        ITEMS.register(modEventBus);
+        ItemInit.ITEMS.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
@@ -73,5 +63,18 @@ public class Project2
             LOGGER.info("HELLO FROM CLIENT SETUP");
             LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
         }
+    }
+
+    public static class ModCreativeTab extends CreativeModeTab {
+        public ModCreativeTab(int index, String label) {
+            super(index, label);
+        }
+
+        @Override
+        public ItemStack makeIcon() {
+            return new ItemStack(ItemInit.MIMI_MUSHI.get());
+        }
+
+        public static final ModCreativeTab instance = new ModCreativeTab(CreativeModeTab.TABS.length, Project2.MOD_ID);
     }
 }
