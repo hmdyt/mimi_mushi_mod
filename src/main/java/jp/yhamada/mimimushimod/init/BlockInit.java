@@ -1,11 +1,11 @@
 package jp.yhamada.mimimushimod.init;
 
 import jp.yhamada.mimimushimod.MimiMushiMod;
+import jp.yhamada.mimimushimod.blocks.MimiMushiBlock;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.DeferredRegister;
@@ -21,7 +21,7 @@ public class BlockInit {
 
     public static final RegistryObject<Block> MIMI_MUSHI_BLOCK = BLOCKS.register(
             "mimi_mushi_block",
-            () -> new Block(BlockBehaviour.Properties.of(Material.STONE))
+            () -> new MimiMushiBlock(Block.Properties.copy(Blocks.DIRT))
     );
 
     @SubscribeEvent
