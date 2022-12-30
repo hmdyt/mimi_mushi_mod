@@ -1,6 +1,8 @@
 package jp.yhamada.mimimushimod.blocks;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -16,18 +18,23 @@ public class MimiMushiBlock extends Block {
         super(p_49795_);
     }
 
+
     @Override
     public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        if (hand.equals(InteractionHand.MAIN_HAND)) {
-            world.explode(player, pos.getX(), pos.getY(), pos.getZ(), 6.0F, true, Explosion.BlockInteraction.BREAK);
-            return InteractionResult.CONSUME;
+        if (!world.isClientSide()) {
+            if (hand.equals(InteractionHand.MAIN_HAND)) {
+                world.explode(player, pos.getX(), pos.getY(), pos.getZ(), 6.0F, true, Explosion.BlockInteraction.BREAK);
+            }
         }
         return super.use(state, world, pos, player, hand, hit);
     }
 
     @Override
     public void wasExploded(Level world, BlockPos pos, Explosion explosion) {
-        world.explode(null, pos.getX(), pos.getY(), pos.getZ(), 6.0F, true, Explosion.BlockInteraction.BREAK);
+        if (!world.isClientSide()) {
+            Minecraft.getInstance().player.sendSystemMessage(Component.literal("[mimi] uwa-"));
+            world.explode(null, pos.getX(), pos.getY(), pos.getZ(), 6.0F, true, Explosion.BlockInteraction.BREAK);
+        }
         super.wasExploded(world, pos, explosion);
     }
 }
