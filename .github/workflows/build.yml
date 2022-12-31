@@ -18,6 +18,8 @@ jobs:
           cache: 'gradle'
       - name: Build
         run: ./gradlew build
+      - name: Save Jar Path
+        run: echo "BUILD_JAR=$(ls build/libs)" >> $GITHUB_ENV
       # create release
       - name: Create Release
         uses: actions/create-release@v1
@@ -33,3 +35,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./build/libs/$BUILD_JAR
+          asset_name: $BUILD_JAR
+          asset_content_type: application/jar
