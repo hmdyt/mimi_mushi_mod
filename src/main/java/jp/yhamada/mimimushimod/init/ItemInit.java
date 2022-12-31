@@ -1,6 +1,7 @@
 package jp.yhamada.mimimushimod.init;
 
 import jp.yhamada.mimimushimod.MimiMushiMod;
+import jp.yhamada.mimimushimod.items.MimiMushiBomb;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.registries.DeferredRegister;
@@ -17,6 +18,10 @@ public class ItemInit {
     public static final RegistryObject<Item> MIMI_MUSHI = ITEMS.register(
             "mimi_mushi",
             () -> new Item(new Item.Properties().tab(MimiMushiMod.ModCreativeTab.instance))
+    );
+    public static final RegistryObject<Item> MIMI_BOMB = ITEMS.register(
+            "mimi_bomb",
+            () -> new MimiMushiBomb(props())
     );
     public static final RegistryObject<ForgeSpawnEggItem> MIMI_MUSHI_ENTITY_SPAWN_EGG = ITEMS.register(
             "mimi_mushi_entity_spawn_egg",
