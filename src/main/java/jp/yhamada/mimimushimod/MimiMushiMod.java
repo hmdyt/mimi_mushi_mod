@@ -2,6 +2,7 @@ package jp.yhamada.mimimushimod;
 
 import com.mojang.logging.LogUtils;
 import jp.yhamada.mimimushimod.init.BlockInit;
+import jp.yhamada.mimimushimod.init.EntityInit;
 import jp.yhamada.mimimushimod.init.ItemInit;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.item.CreativeModeTab;
@@ -32,6 +33,7 @@ public class MimiMushiMod {
 
         ItemInit.ITEMS.register(modEventBus);
         BlockInit.BLOCKS.register(modEventBus);
+        EntityInit.ENTITIES.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
