@@ -30,9 +30,4 @@ public class MimiMushiEntity extends Bee {
         return checkAnimalSpawnRules(entityType, serverLevelAccessor, spawnType, blockPos, randomSource);
     }
 
-//    @Override
-//    public boolean wasKilled(ServerLevel level, LivingEntity entity) {
-//        level.addParticle(ParticleTypes.DRAGON_BREATH, entity.getX(), entity.getY(), entity.getZ(), 0.0D, 0.0D, 0.0D);
-//        return super.wasKilled(level, entity);
-//    }
 }
